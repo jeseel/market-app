@@ -1,9 +1,13 @@
-<button md-raised-button routerLink="/shooping-cart">Shooping Cart</button>
+<md-toolbar>
+  <button md-raised-button routerLink="/shooping-cart">Shooping Cart</button>
 
-<md-menu #menu="mdMenu">
-  <button md-menu-item>My Orders</button>
-  <button md-menu-item>Manage Orders</button>
-  <button md-menu-item>Manage Products</button>
-  <button md-menu-item>Log out</button>
-</md-menu> 
-<button md-raised-button color="primary" [mdMenuTriggerFor]="menu">Username</button>
+  <button md-raised-button color="primary" [mdMenuTriggerFor]="menu">Username</button>
+  <md-menu #menu="mdMenu">
+    <button md-menu-item>My Orders</button>
+    <button md-menu-item>Manage Orders</button>
+    <button md-menu-item>Manage Products</button>
+    <button md-menu-item>Log out</button>
+  </md-menu> 
+
+  
+</md-toolbar>
