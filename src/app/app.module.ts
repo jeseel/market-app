@@ -9,6 +9,11 @@ import { HomeComponent } from './home/home.component';
 import { ShoopingCartComponent } from './shooping-cart/shooping-cart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+// Firebase Settings
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from 'environments/environment';
 
 const appRoutes: Routes =
   [
@@ -35,6 +40,9 @@ const appRoutes: Routes =
   imports: [
     BrowserModule,
     MaterialModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }
