@@ -1,13 +1,22 @@
 <md-toolbar color="primary">
+  <button md-raised-button routerLink="/">Home</button>
   <button md-raised-button routerLink="/shooping-cart">Shooping Cart</button>
 
-  <button md-raised-button color="primary" [mdMenuTriggerFor]="menu">Username</button>
-  <md-menu #menu="mdMenu">
-    <button md-menu-item>My Orders</button>
-    <button md-menu-item>Manage Orders</button>
-    <button md-menu-item>Manage Products</button>
-    <button md-menu-item>Log out</button>
-  </md-menu> 
+  <ng-template #anonymousUser>
+    <button md-raised-button routerLink="/login">Login</button>
+  </ng-template>
 
-  
+  <div *ngIf="auth.user$ | async as user; else anonymousUser">
+    <button md-raised-button color="primary" [mdMenuTriggerFor]="menu">
+      {{user.displayName}}
+    </button>
+
+    <md-menu #menu="mdMenu">
+      <button md-menu-item routerLink="/my/orders">My Orders</button>
+      <button md-menu-item routerLink="/admin/orders">Manage Orders</button>
+      <button md-menu-item routerLink="/admin/products">Manage Products</button>
+      <button md-menu-item (click)="logOut()">Log out</button>
+    </md-menu>
+  </div>
+
 </md-toolbar>
