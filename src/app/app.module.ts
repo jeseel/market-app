@@ -10,7 +10,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule, AUTH_PROVIDERS } from 'angularfire2/auth';
 
-
 // Components
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -24,8 +23,11 @@ import { AdminOrdersComponent } from './admin/orders/admin-orders.component';
 import { MyOrdersComponent } from './my/my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/products/admin-products.component';
 import { environment } from 'environments/environment';
+
+//Services
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
+import { UserService } from './user.service';
 
 const appRoutes: Routes =
   [
@@ -101,7 +103,10 @@ const appRoutes: Routes =
     )
   ],
   providers: [
-    AuthService, AuthGuard
+
+    AuthService, 
+    AuthGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
