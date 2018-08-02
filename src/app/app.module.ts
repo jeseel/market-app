@@ -28,6 +28,7 @@ import { environment } from 'environments/environment';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { UserService } from './user.service';
+import { AdminAuthGuard } from './admin-auth-guard.service';
 
 const appRoutes: Routes =
   [
@@ -66,12 +67,12 @@ const appRoutes: Routes =
     {
       path: 'admin/products',
       component: AdminProductsComponent,
-      canActivate: [AuthGuard]
+      canActivate: [AuthGuard, AdminAuthGuard]
     },
     {
       path: 'admin/orders',
       component: AdminOrdersComponent,
-      canActivate: [AuthGuard]
+      canActivate: [AuthGuard, AdminAuthGuard]
     },
     { path: '***', component: PageNotFoundComponent }
   ]
@@ -106,7 +107,8 @@ const appRoutes: Routes =
 
     AuthService, 
     AuthGuard,
-    UserService
+    UserService,
+    AdminAuthGuard
   ],
   bootstrap: [AppComponent]
 })
