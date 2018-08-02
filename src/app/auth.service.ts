@@ -1,7 +1,7 @@
 import { UserService } from './user.service';
 import { AppUser } from 'app/models/app-user';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth/auth';
 import { Injectable, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
