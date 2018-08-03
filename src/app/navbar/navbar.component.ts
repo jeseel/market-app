@@ -26,4 +26,8 @@ export class NavbarComponent implements OnDestroy {
     console.log('OnDestroy!!!!');
   }
 
+  logIn() {
+    this.auth.login();
+  };
+
 }

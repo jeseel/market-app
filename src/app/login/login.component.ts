@@ -9,8 +9,6 @@ export class LoginComponent {
 
   constructor(private auth: AuthService) { }
 
-  logIn() {
-    this.auth.login();
-  };
+
 
 }

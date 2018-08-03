@@ -3,7 +3,7 @@
   <button md-raised-button routerLink="/shooping-cart">Shooping Cart</button>
 
   <ng-template #anonymousUser>
-    <button md-raised-button routerLink="/login">Login</button>
+    <button md-raised-button (click)="logIn()">Login</button>
   </ng-template>
 
   <div *ngIf="appUser; else anonymousUser">
