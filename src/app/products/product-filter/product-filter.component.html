@@ -1,0 +1,23 @@
+<md-card class="stickyOnTop">
+    <md-card-content>        
+      <md-nav-list>
+        <a md-list-item
+          [class.mat-list-item-focus]="!category"
+          mdLine 
+          href="/" 
+          routerLink="/"
+        >All Categories</a>
+        <md-divider></md-divider>
+
+        <div *ngFor="let item of categories">
+          <a md-list-item  
+            [class.mat-list-item-focus]="category===item.$key"
+            mdLine href="/" 
+            routerLink="/" 
+            [queryParams]="{category:item.$key}"
+          >{{item.name }}</a>
+        <md-divider></md-divider>
+      </div>
+      </md-nav-list>
+    </md-card-content>
+  </md-card>

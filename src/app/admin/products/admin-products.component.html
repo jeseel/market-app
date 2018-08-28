@@ -1,3 +1,89 @@
-<p>
-  products works!
-</p>
+<div class="content" flexLayout="row">
+  <p>
+    <a md-raised-button routerLink="/admin/products/new" color="primary">New Product</a>
+  </p>
+  <p>
+    <md-form-field>
+      <input mdInput #query type="text" placeholder="Search..." (keyup)="filter(query.value)">
+    </md-form-field>
+  </p>
+
+  <button md-icon-button [mdMenuTriggerFor]="columnsSelect">
+    Column Show<md-icon>dialpad</md-icon>
+  </button>
+
+  <md-menu #columnsSelect="mdMenu">
+
+    <div *ngFor="let col of allColumns" class="availableColumns">
+
+      <input type="checkbox" [id]="col.name" (click)="toggle(col, $event) " [checked]="isChecked(col)" [name]="col.name" [disabled]="columns.length==1 && isChecked(col)"
+      />
+      <label [attr.for]="col.name">{{col.name}}</label>
+      <!-- doesn't works with angular material --> -->
+       <!-- <div *ngFor="let col of allColumns" class="availableColumns">
+          <md-checkbox [id]="col.name" (click)="toggle(col)" [checked]="isChecked(col)" [name]="col.name">{{col.name}}</md-checkbox >
+      </div> -->
+    </div>
+  </md-menu>
+
+  <ngx-datatable #mydatatable class="material" [rows]="filteredProducts" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+    [rowHeight]="auto" [rows]="rows">
+
+    <ngx-datatable-column *ngFor="let col of columns" [name]="col.name" [prop]="col.prop">
+      <ngx-datatable-column name="col.name" prop="col.prop" *ngIf="col.prop == 'title'">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <a (click)="edit(row)">
+            {{row.title}}
+          </a>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="col.name" prop="col.prop" *ngIf="col.prop == 'price'">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <span>
+            {{row.price | currency: 'CAD': true}}
+          </span>
+        </ng-template>
+      </ngx-datatable-column>
+
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        <button md-button color="primary" (click)="edit(row)">
+          Edit
+        </button>
+        <button type="button" md-button color="accent" (click)="delete(row)">
+          Delete
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <!-- <ngx-datatable-column name="Title" prop="title">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        <span (click)="edit(row)">
+           {{row.title}}
+        </span>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Price" prop="price" >
+      <ng-template ngx-datatable-cell-template let-row="row">
+        <span>
+          {{row.price}}
+        </span>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        <button md-button color="primary" (click)="edit(row)">
+          Edit
+        </button>
+        <button type="button" md-button color="accent" (click)="delete(row)">
+          Delete
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+  -->
+  </ngx-datatable>
+
+</div>

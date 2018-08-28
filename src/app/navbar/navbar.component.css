@@ -1,3 +1,10 @@
 .mat-raised-button{
     margin-right: 5px;
 }
+.mat-toolbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1
+}

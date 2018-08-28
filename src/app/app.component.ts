@@ -7,20 +7,23 @@ import { UserService } from './user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{
+export class AppComponent {
 
   constructor(
     private auth: AuthService,
     private router: Router,
     private userService: UserService,
   ) {
-    auth.user$.subscribe(user => {
+
+    this.auth.user$.subscribe(user => {
 
       if (user) {
-        userService.save(user);
-
+        this.userService.save(user);
         let returnURL = localStorage.getItem('returnUrl');
-        this.router.navigateByUrl(returnURL);
+        if (returnURL) {
+          localStorage.removeItem('returnUrl');
+          this.router.navigateByUrl(returnURL);
+        }
       }
       // else {
       //   this.router.navigateByUrl('/');

@@ -1,0 +1,9 @@
+<h2 md-dialog-title>{{data.title}}</h2>
+<md-dialog-content>
+  <span>{{data.message[0].title}} <strong>{{data.message[1].objectName}}</strong>?</span>
+</md-dialog-content>
+
+<md-dialog-actions>
+  <button md-raised-button md-dialog-close>Cancel</button>
+  <button md-raised-button [md-dialog-close]="true" color="warn">Delete</button>
+</md-dialog-actions>

@@ -1,0 +1,75 @@
+<div fxLayout="row" fxLayoutGap="15px" style="margin-top:15px;">
+ 
+    <div fxFlex="70%">
+      <form #f="ngForm" (ngSubmit)="save(f.value)" class="example-form">
+        <div flxLayout="row" fxLayoutGap="20px" flxLayoutAling="space-evenly center">
+          <md-form-field>
+            <input mdInput #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" placeholder="Title" class="example-full-width"
+              required>
+            <md-error *ngIf="title.touched && title.invalid">
+              <div *ngIf="price.erros.required">
+                Title is required!
+              </div>
+            </md-error>
+            <!-- <span ></span> -->
+          </md-form-field>
+
+          <md-form-field>
+            <input mdInput #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" placeholder="Price" class="example-full-width"
+              required [min]="0">
+            <md-error *ngIf="price.touched && price.invalid">
+              <div *ngIf="price.errors.required">Price is required!</div>
+              <div *ngIf="price.errors.min">Price should be 0 or higher.</div>
+            </md-error>
+
+          </md-form-field>
+
+          <md-select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" placeholder="Category" required>
+            <md-option *ngFor="let c of categories$ | async " [value]="c.$key">
+              {{c.name}}
+            </md-option>
+          </md-select>
+
+          <md-error *ngIf="category.touched && category.invalid">
+            <span class="small-text">
+              Category is required
+            </span>
+          </md-error>
+
+          <md-form-field>
+            <input #imageUrl="ngModel" mdInput [(ngModel)]="product.imageUrl" name="imageUrl" placeholder="Image URL" class="example-full-width"
+              required url>
+            <md-error *ngIf="imageUrl.touched && imageUrl.invalid">
+              <div *ngIf="imageUrl.errors.required">Image is required</div>
+              <div *ngIf="imageUrl.errors.url">Please enter a valid URL.</div>
+            </md-error>
+          </md-form-field>
+
+          <button  md-raised-button color="primary">Save</button>
+
+        </div>
+      </form>
+    </div>
+    <div fxFlex="30%" *ngIf="product.title">
+      <div fxLayout="row" fxLayoutAlign="center none" fxFlex="100%">
+        <product-card [product]="product" [show-actions]="false"></product-card>
+        <!-- <md-card>
+          <md-card-header>
+            <md-card-title>
+              <h2>{{product.title}}</h2>
+            </md-card-title>
+            <md-card-subtitle>
+              {{product.category}}
+            </md-card-subtitle>
+          </md-card-header>
+
+          <md-card-content>
+            <span>Price: {{product.price | currency: 'CAD': true}}</span>
+            <img *ngIf="product.imageUrl" md-card-imge [src]="product.imageUrl" class="image-card">
+          </md-card-content>
+
+        </md-card> -->
+      </div>
+    </div>
+
+</div>

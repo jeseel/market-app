@@ -1,0 +1,12 @@
+<md-card>
+  <img md-card-image src="{{product.imageUrl}}" alt="{{product.title}}">
+
+  <md-card-content>
+    <h3>{{product.title}}</h3>
+    <p>{{product.price | currency:'CAD': true}}</p>
+  </md-card-content>
+
+  <md-card-actions *ngIf="showActions">
+    <button md-raised-button color="primary" color="primary">Add Card</button>
+  </md-card-actions>
+</md-card>
