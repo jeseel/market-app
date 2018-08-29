@@ -17,7 +17,7 @@ export class ProductsComponent {
 
   constructor(
     private productService: ProductService,
-    router: ActivatedRoute
+    route: ActivatedRoute
   ) {
 
     //  All Products
@@ -25,7 +25,7 @@ export class ProductsComponent {
       .getAll()
       .switchMap((prods: Product[]) => {
         this.products = prods;
-        return router.queryParamMap
+        return route.queryParamMap
       })
       .subscribe((params: any) => {
         //  get category on url 
