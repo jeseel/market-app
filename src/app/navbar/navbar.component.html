@@ -1,6 +1,7 @@
 <md-toolbar color="primary">
   <button md-raised-button routerLink="/">Home</button>
-  <button md-raised-button routerLink="/shooping-cart">Shooping Cart</button>
+  <button md-raised-button routerLink="/shopping-cart">Shopping Cart <span class="badge" *ngIf="cart$ | async as cart">{{cart.totalItemsCount}}</span></button>   
+  
 
   <ng-template #anonymousUser>
     <button md-raised-button (click)="logIn()">Login</button>

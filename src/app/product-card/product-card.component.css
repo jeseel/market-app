@@ -2,10 +2,6 @@
     margin-bottom: 15px;
 }
 
-.mat-card:hover {
-    background-color:rgba(216, 214, 214, 0.555);
-}
-
 .mat-card-actions > button{
     display: inline-block;
     width: 100%;
@@ -13,7 +9,10 @@
 .mat-card-image{
     max-height: 150px; 
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 2px;
     /* max-width: 100%; */
-
+}
+.quantity{
+    font-weight:500;
+    padding: 10px;
 }

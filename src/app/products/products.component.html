@@ -4,10 +4,11 @@
   </div>
 
   <div fxFlex="75%">
-    <div fxLayout="row wrap" fxLayoutGap="15px" fxLayoutAlign="start">
+    <div *ngIf="cart$ | async as cart" fxLayout="row wrap" fxLayoutGap="15px" fxLayoutAlign="start">
       <div *ngFor="let prod of productsFiltered" fxFlex="250px">
-        <product-card [product]="prod" [show-actions]></product-card>
+        <product-card [product]="prod" [shopping-cart]="cart"></product-card>
       </div>
+      {{shoppingCart}}
     </div>
   </div>
 </div>

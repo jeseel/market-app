@@ -8,3 +8,13 @@
     overflow: hidden;
     z-index: 1
 }
+
+.badge{
+    background-color: rgba(255, 196, 0, 0.897);
+    padding-right: 5px;
+    padding-left: 5px;
+    color: black;
+    border-radius: 10px;
+    font-weight: bold; 
+    position: static;
+}

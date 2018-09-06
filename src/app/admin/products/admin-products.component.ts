@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { ProductService } from '../../product.service';
+import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
 import { MdDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
@@ -61,12 +61,9 @@ export class AdminProductsComponent implements OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-
       if (result) {
-        if (product.$key)
-          this.productService.delete(product.$key);
+        if (product.$key) this.productService.delete(product.$key);
       }
-
     })
   }
 

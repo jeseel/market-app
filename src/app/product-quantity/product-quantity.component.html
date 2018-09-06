@@ -1,0 +1,7 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <button md-button color="warn" (click)="removeFromCart()">-</button>
+
+  <div class="quantity">{{shoppingCart.getQuantity(product)}}</div>
+
+  <button md-button color="primary" (click)="addToCard()">+</button>
+</div>

@@ -9,7 +9,7 @@
   </p>
 
   <button md-icon-button [mdMenuTriggerFor]="columnsSelect">
-    Column Show<md-icon>dialpad</md-icon>
+    Column Showed<md-icon>dialpad</md-icon>
   </button>
 
   <md-menu #columnsSelect="mdMenu">
@@ -19,15 +19,21 @@
       <input type="checkbox" [id]="col.name" (click)="toggle(col, $event) " [checked]="isChecked(col)" [name]="col.name" [disabled]="columns.length==1 && isChecked(col)"
       />
       <label [attr.for]="col.name">{{col.name}}</label>
-      <!-- doesn't works with angular material --> -->
+      <!-- doesn't works with angular material --> 
        <!-- <div *ngFor="let col of allColumns" class="availableColumns">
           <md-checkbox [id]="col.name" (click)="toggle(col)" [checked]="isChecked(col)" [name]="col.name">{{col.name}}</md-checkbox >
       </div> -->
     </div>
   </md-menu>
 
-  <ngx-datatable #mydatatable class="material" [rows]="filteredProducts" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
-    [rowHeight]="auto" [rows]="rows">
+  <ngx-datatable 
+  #mydatatable 
+  class="material" 
+  [rows]="filteredProducts" 
+  [columnMode]="'force'" 
+  [headerHeight]="50" 
+  [footerHeight]="50"
+  [rowHeight]="auto">
 
     <ngx-datatable-column *ngFor="let col of columns" [name]="col.name" [prop]="col.prop">
       <ngx-datatable-column name="col.name" prop="col.prop" *ngIf="col.prop == 'title'">

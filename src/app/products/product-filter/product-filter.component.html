@@ -10,7 +10,8 @@
         <md-divider></md-divider>
 
         <div *ngFor="let item of categories">
-          <a md-list-item  
+          <a 
+            md-list-item  
             [class.mat-list-item-focus]="category===item.$key"
             mdLine href="/" 
             routerLink="/" 

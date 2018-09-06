@@ -14,8 +14,7 @@ import {
   MatDialogModule,
   MatCheckboxModule,
   MatListModule,
-  MatGridListModule
-  
+  MatChipsModule 
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,8 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     MatCheckboxModule,
     MatListModule,
-    MatGridListModule
-    
+    MatChipsModule    
   ],
   exports: [
     MatButtonModule,
@@ -51,7 +49,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     MatCheckboxModule ,
     MatListModule,
-    MatGridListModule
+    MatChipsModule
   ]
 
 })

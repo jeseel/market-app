@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 
+
+import 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { AppError } from 'app/common/app-error';
+
+
 @Injectable()
 export class ProductService {
 
@@ -11,7 +17,7 @@ export class ProductService {
   }
 
   getAll() {
-    return this.db.list('/products');
+    return this.db.list('/products')
   }
 
   get(productId) {
@@ -23,7 +29,11 @@ export class ProductService {
   }
 
   delete(productId) {
-    return this.db.object('/products/' + productId).remove();
-  }
+    return this.db.object('/products/' + productId)
+      .remove()
+      .catch((error: any) => {
+        return Observable.throw(new AppError(error))
+  });
+}
 
 }

@@ -15,7 +15,13 @@
           </md-form-field>
 
           <md-form-field>
-            <input mdInput #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" placeholder="Price" class="example-full-width"
+            <input mdInput 
+              #price="ngModel" 
+              [(ngModel)]="product.price" 
+              name="price" id="price" 
+              type="number" 
+              placeholder="Price" 
+              class="example-full-width"
               required [min]="0">
             <md-error *ngIf="price.touched && price.invalid">
               <div *ngIf="price.errors.required">Price is required!</div>
@@ -53,22 +59,6 @@
     <div fxFlex="30%" *ngIf="product.title">
       <div fxLayout="row" fxLayoutAlign="center none" fxFlex="100%">
         <product-card [product]="product" [show-actions]="false"></product-card>
-        <!-- <md-card>
-          <md-card-header>
-            <md-card-title>
-              <h2>{{product.title}}</h2>
-            </md-card-title>
-            <md-card-subtitle>
-              {{product.category}}
-            </md-card-subtitle>
-          </md-card-header>
-
-          <md-card-content>
-            <span>Price: {{product.price | currency: 'CAD': true}}</span>
-            <img *ngIf="product.imageUrl" md-card-imge [src]="product.imageUrl" class="image-card">
-          </md-card-content>
-
-        </md-card> -->
       </div>
     </div>
 
