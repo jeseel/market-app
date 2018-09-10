@@ -1,0 +1,38 @@
+<ng-container *ngIf="shoppingCart" class="container">
+  <h2>Order Summary</h2>
+  <p>you have <b>{{shoppingCart.totalItemsCount}}</b> in your shopping cart.</p>
+
+  <ngx-datatable 
+    #mydatatable 
+    class="material"
+    [rows]="shoppingCart.items"
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [rowHeight]="auto"
+    [footerHeight]="50">
+    <ngx-datatable-column [width]="400">
+      <ng-template ngx-datatable-cell-template let-row="row">
+        {{row.quantity}}x {{row.title}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-cell-template let-row="row">
+        {{row.totalPrice | currency: 'CAD': true}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-footer>
+      <ng-template ngx-datatable-footer-template>
+
+        <div style="padding: 15px 10px">
+          <strong>Total: </strong>
+          <span>
+            {{shoppingCart.totalPrice | currency: 'CAD': true}}
+          </span>
+        </div>
+      </ng-template>
+    </ngx-datatable-footer>
+
+  </ngx-datatable>
+</ng-container>

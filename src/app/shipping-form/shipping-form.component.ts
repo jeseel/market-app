@@ -1,30 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { ShippingService } from 'app/services/shipping.service';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ShoppingCartService } from '../services/shopping-cart.service';
+import { Subscription } from 'rxjs/Subscription';
+import { ShoppingCart } from '../models/shopping-cart';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { OrderService } from '../order.service';
+import { Order } from 'app/models/order';
 
 @Component({
-  selector: 'app-shipping-form',
+  selector: 'shipping-form',
   templateUrl: './shipping-form.component.html',
   styleUrls: ['./shipping-form.component.css']
 })
-export class ShippingFormComponent implements OnInit {
 
-  shipping = {};
+export class ShippingFormComponent implements OnInit, OnDestroy{
+  @Input('shopping-cart') cart: ShoppingCart;
 
-  constructor(private shippingService : ShippingService, private shoppingCartService: ShoppingCartService) { }
+  shipping = { name: 'Test2', address1: 'address 1', address2: 'address 2', city: 'Montreal' };
+  userId: string;
+  userSubscription: Subscription;
 
-  ngOnInit() {
-    // let shoppingcart = await this.shoppingCartService.getAll();
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private orderService: OrderService) { }
+    
+    
+  ngOnInit(){
+    this.userSubscription = this.authService.user$
+      .subscribe(user => this.userId = user.uid)
   }
 
-  save() {
+  async placeOrder() {
 
-    let order = {
-      dataPlaced: new Date().getTime(),
-      shipping: this.shipping
-    }
-    // console.log(order)
-    this.shippingService.create(order);
+    let order = new Order(this.userId, this.shipping, this.cart);
+    let result = await this.orderService.placeOrder(order);
+    this.router.navigate(['/order-success', result.key])
   }
 
+  ngOnDestroy(){
+    this.userSubscription.unsubscribe();    
+  }
+  
 }

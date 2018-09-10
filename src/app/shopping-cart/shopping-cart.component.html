@@ -18,10 +18,10 @@
                 [footerHeight]="50"
                 [rowHeight]="auto"> 
             
-                <ngx-datatable-column >
-                <ng-template ngx-datatable-cell-template let-row="row">
-                    <img class="avatar" [src]="row.imageUrl" [alt]="row.title">
-                </ng-template>
+                <ngx-datatable-column>
+                    <ng-template ngx-datatable-cell-template let-row="row">
+                        <img class="avatar" [src]="row.imageUrl" [alt]="row.title">
+                    </ng-template>
                 </ngx-datatable-column>
 
                 <ngx-datatable-column name="Product">
@@ -60,10 +60,7 @@
                     </ngx-datatable-footer>
             </ngx-datatable>
         </div>
-    </ng-container>
-    
+        <a md-raised-button routerLink="/check-out" color="primary" *ngIf="shoppingCart.totalItemsCount>0">Check Out</a>            
+    </ng-container>    
 </div>
 
-<!-- <div *ngIf="shoppingCart.length">
-    <a md-raised-button routerLink="/check-out" color="primary">Check Out</a>    
-</div>  -->

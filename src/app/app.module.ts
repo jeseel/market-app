@@ -42,6 +42,10 @@ import { ProductService } from './services/product.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { ShippingService } from './services/shipping.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { OrderSummaryComponent } from 'app/order-summary/order-summary.component';
+import { OrderService } from './order.service';
+import { OrderDetailsComponent } from 'app/order-datails/order-datails.component';
+import { DialogOverviewComponent } from 'app/dialog-overview/dialog-overview.component';
 
 
 const appRoutes: Routes =
@@ -72,13 +76,18 @@ const appRoutes: Routes =
       canActivate: [AuthGuard]
     },
     {
-      path: 'order-success',
+      path: 'order-success/:id',
       component: OrderSuccessComponent,
       canActivate: [AuthGuard]
     },
     {
       path: 'my/orders',
       component: MyOrdersComponent,
+      canActivate: [AuthGuard]
+    },
+    {
+      path: 'my/orders/order-details/:id',
+      component: OrderDetailsComponent,
       canActivate: [AuthGuard]
     },
     {
@@ -106,6 +115,11 @@ const appRoutes: Routes =
       component: AdminOrdersComponent,
       canActivate: [AuthGuard, AdminAuthGuard]
     },
+    {
+      path: 'admin/order-details/:id',
+      component: OrderDetailsComponent,
+      canActivate: [AuthGuard, AdminAuthGuard]
+    },
     { path: '***', component: PageNotFoundComponent }
   ]
 
@@ -128,10 +142,14 @@ const appRoutes: Routes =
     ProductFilterComponent,
     ProductCardComponent,
     ShippingFormComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    OrderSummaryComponent,
+    OrderDetailsComponent,
+    DialogOverviewComponent
   ],
   entryComponents: [
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    DialogOverviewComponent
   ],
   imports: [
     NgxDatatableModule,
@@ -157,8 +175,8 @@ const appRoutes: Routes =
     AdminAuthGuard,
     CategoryService,
     ProductService,
-    ShoppingCartService,
-    ShippingService
+    ShoppingCartService,    
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,8 @@
-<p>
-  check-out works!
-</p>
+<div *ngIf="cart$ | async as cart" fxlayout="row" fxLayoutAling="start" fxLayoutGap="15px" style="margin-top:15px">
+  <div fxFlex="50">      
+     <shipping-form [shopping-cart]="cart"></shipping-form>
+  </div>
+  <div fxFlex="50">
+      <order-summary  [shopping-cart]="cart"></order-summary>
+  </div>
+</div>

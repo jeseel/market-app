@@ -2,7 +2,7 @@
 export class ShoppingCartItem {
     $key: string;
     title: string;
-    imageURL: string;
+    imageUrl: string;
     price: number;
     quantity: number;
 

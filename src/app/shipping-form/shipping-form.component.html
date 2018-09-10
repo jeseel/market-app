@@ -1,24 +1,34 @@
-<div fxLayout="column" fxLayoutAlign=" none">
-  <h3>Shipping</h3>
+<div fxLayout="column" fxLayoutAlign="none">
+  <h2>Shipping</h2>
 
-  <form #f="ngForm" (ngSubmit)="save(f.value)" action="" fxFlex="500px">
+  <form #f="ngForm" (ngSubmit)="placeOrder()" action="" fxFlex="500px">
     <md-form-field fxFill>
-      <input mdInput fxFlex="100" [(ngModel)]="shipping.name" ngModel type="text" name="name" placeholder="Name">
+      <input mdInput #name="ngModel" fxFlex="100" [(ngModel)]="shipping.name" ngModel type="text" name="name" placeholder="Name" required>
     </md-form-field>
-
-    <md-form-field fxFill>
-      <input mdInput fxFlex="100" [(ngModel)]="shipping.address1" type="text" name="address1" placeholder="Address 1">
-    </md-form-field>
-
-    <md-form-field fxFill>
-      <input mdInput fxFlex="100" [(ngModel)]="shipping.address2" type="text" name="address2" placeholder="Address 2">
-    </md-form-field>
+    <div *ngIf="name.touched && name.invalid">
+      <p *ngIf="name.errors.required">Name is required.</p>
+    </div>
 
     <md-form-field fxFill>
-      <input mdInput fxFlex="100" [(ngModel)]="shipping.city" type="text" name="city" placeholder="City">
+      <input #address1="ngModel" mdInput fxFlex="100" [(ngModel)]="shipping.address1" type="text" name="address1" placeholder="Address 1" required>
     </md-form-field>
+    <div *ngIf="address1.touched && address1.invalid">
+      <p *ngIf="address1.errors.required">Address1 is required.</p>
+    </div>
 
-    <button md-raised-button color="primary">Place Order</button>
+    <md-form-field fxFill>
+      <input #address2="ngModel" mdInput fxFlex="100" [(ngModel)]="shipping.address2" type="text" name="address2" placeholder="Address 2" required>
+    </md-form-field>
+    <div *ngIf="address2.touched && address2.invalid">
+      <p *ngIf="address2.errors.required">Address2 is required.</p>
+    </div>
 
+    <md-form-field fxFill>
+      <input mdInput #city="ngModel" fxFlex="100" [(ngModel)]="shipping.city" type="text" name="city" placeholder="City">
+    </md-form-field>
+    <div *ngIf="city.touched && city.invalid">
+      <p *ngIf="city.errors.required">City is required.</p>
+    </div>
+    <button [disabled]="!f.valid" md-raised-button color="primary">Place Order</button>
   </form>
 </div>
