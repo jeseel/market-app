@@ -1,0 +1,18 @@
+<md-card>
+  <img *ngIf="product.imageUrl" md-card-image src="{{product.imageUrl}}" alt="{{product.title}}">
+
+  <md-card-content>
+    <h3>{{product.title}}</h3>
+    <p>{{product.price | currency:'CAD': true}}</p>
+  </md-card-content>
+
+  <md-card-actions *ngIf="showActions && shoppingCart">
+    <button md-icon-button *ngIf="shoppingCart.getQuantity(product)===0; else updateQuantity" color="primary" (click)="addToCard()">
+      <md-icon class="fas fa-cart-plus"></md-icon>
+    </button>
+    <ng-template #updateQuantity>
+      <product-quantity [product]="product" [shopping-cart]="shoppingCart"></product-quantity>
+    </ng-template>
+  </md-card-actions>
+  
+</md-card>

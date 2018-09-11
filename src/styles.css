@@ -4,16 +4,36 @@
 @import '~@swimlane/ngx-datatable/release/themes/material.css';
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
 
+
+
+*{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
 body{
     padding:0;
     margin: 0;
 }
 
 .mat-raised-button:not([color]){
-    color:#3f51b5;
+    color:#6094cf;
 }
 
-*{
-    font-family:Arial, Helvetica, sans-serif;
+.stickyOnTop{
+    position: sticky !important;
+    top: 0;
 }
 
+
+.mat-toolbar.mat-primary {
+    background: #6094cf;
+    color: rgba(255,255,255,.87);
+}
+.mat-nav-list .mat-list-item.mat-list-item-focus, .mat-nav-list .mat-list-item:hover {
+    background: #6094cf;
+    color: rgba(255, 255, 255, 0.952);
+}
+
+.mat-button.mat-primary, .mat-icon-button.mat-primary {
+    color: #6094cf;
+}

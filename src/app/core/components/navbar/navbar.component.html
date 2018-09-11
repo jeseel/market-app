@@ -1,0 +1,36 @@
+<md-toolbar  color="primary">
+  <button md-button routerLink="/">
+    <!-- <md-icon>home</md-icon> -->
+    <md-icon class="fas fa-home"></md-icon>
+
+  </button>
+
+  <button md-button routerLink="/shopping-cart">
+    <md-icon class="fas fa-shopping-cart"></md-icon>
+    <!-- <md-icon>shopping_cart</md-icon> -->
+    <span class="badge" *ngIf="cart$ | async as cart">{{cart.totalItemsCount}}</span>
+  </button>
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <ng-template #anonymousUser>
+    <button md-raised-button (click)="logIn()">Login</button>
+  </ng-template>
+
+  <div *ngIf="appUser; else anonymousUser">
+    <button md-button [mdMenuTriggerFor]="menu">
+      <md-icon class="fas fa-user"></md-icon>
+      {{appUser.name}}
+    </button>
+
+    <md-menu #menu="mdMenu">
+      <button md-menu-item routerLink="/my/orders">My Orders</button>
+      <ng-container *ngIf="appUser.isAdmin">
+        <button md-menu-item routerLink="/admin/orders">Manage Orders</button>
+        <button md-menu-item routerLink="/admin/products">Manage Products</button>
+      </ng-container>
+      <button md-menu-item (click)="logOut()">Log out</button>
+    </md-menu>
+  </div>
+</md-toolbar>
+

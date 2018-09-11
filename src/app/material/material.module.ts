@@ -1,22 +1,20 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
 import {
-  MatMenuModule,
   MatButtonModule,
-  MatToolbarModule,
-  MatInputModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
-  MatSelectModule,
-  MatCardModule,
-  MatTableModule,
-  MatDialogModule,
-  MatCheckboxModule,
+  MatInputModule,
   MatListModule,
-  MatChipsModule 
+  MatMenuModule,
+  MatSelectModule,
+  MatTableModule,
+  MatToolbarModule,
 } from '@angular/material';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -34,22 +32,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     MatCheckboxModule,
     MatListModule,
-    MatChipsModule    
+    MatChipsModule,
+    MatIconModule    
   ],
   exports: [
+    CommonModule,
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule,
+    BrowserAnimationsModule,
     MatSelectModule,
     MatCardModule,
     MatTableModule,
     MatDialogModule,
-    MatCheckboxModule ,
+    MatCheckboxModule,
     MatListModule,
-    MatChipsModule
+    MatChipsModule,
+    MatIconModule
   ]
 
 })

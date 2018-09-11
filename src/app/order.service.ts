@@ -1,11 +1,10 @@
 import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database/database';
-import { ShoppingCartService } from 'app/services/shopping-cart.service';
-import * as firebase from 'firebase';
+import { ShoppingCartService } from 'app/shared/services/shopping-cart.service';
 import { FirebaseApp } from 'angularfire2';
 import { Subscription } from 'rxjs';
 import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-import { Order } from 'app/models/order';
+import { Order } from 'app/shared/models/order';
 
 @Injectable()
 

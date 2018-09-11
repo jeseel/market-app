@@ -1,0 +1,26 @@
+.mat-raised-button{
+    margin-right: 5px;
+}
+/* .mat-toolbar{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+} */
+
+.badge{
+    background-color: rgba(255, 196, 0, 0.897);
+    padding-right: 5px;
+    padding-left: 5px;
+    color: black;
+    border-radius: 10px;
+    font-weight: bold; 
+    position: static;
+}
+
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
