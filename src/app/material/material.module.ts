@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
@@ -18,25 +17,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatFormFieldModule,
-    BrowserAnimationsModule,
-    MatSelectModule,
-    MatCardModule,
-    MatTableModule,
-    MatDialogModule,
-    MatCheckboxModule,
-    MatListModule,
-    MatChipsModule,
-    MatIconModule    
-  ],
   exports: [
-    CommonModule,
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,

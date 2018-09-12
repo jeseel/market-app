@@ -1,54 +1,49 @@
+<div *ngIf="data.orders">
 
-<div *ngIf="data.test== 'test'">
-    
-    <h2 md-dialog-title>Order Detail</h2>
-    <md-dialog-content *ngIf="data.action == 'detail'">    
-       <div fxLayout="row " fxLayoutAlign="start" fxLayoutGap="50px" class="content" style="margin-top:15px">
-      <ng-container *ngIf="data.order$ | async as orders">
-        <div fxFlex="50%">
-  
-          <h2>Product</h2>
-          <ngx-datatable #mydatatable class="material" [rows]="orders.items" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
-            [rowHeight]="auto">
-            <ngx-datatable-column name="Product">
-              <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.product.title}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Quantity">
-              <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.quantity}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column name="Total Price">
-              <ng-template ngx-datatable-cell-template let-row="row">
-                {{row.totalPrice | currency: 'CAD':true}}
-              </ng-template>
-            </ngx-datatable-column>
-          </ngx-datatable>
-        </div>
-  
-        <div fxFlex="50%">
-          <h2>Shipping</h2>
-          <md-list>
-            <md-list-item>
-              {{orders.shipping.name}}
-            </md-list-item>
-            <md-divider></md-divider>
-            <md-list-item>
-              {{orders.shipping.address1}} - {{orders.shipping.city}}
-            </md-list-item>
-            <md-divider></md-divider>
-            <md-list-item>
-              {{orders.shipping.address2}} - {{orders.shipping.city}}
-            </md-list-item>
-            <md-divider></md-divider>
-          </md-list>
-        </div>
-      </ng-container>
-    </div>
-   </md-dialog-content>
-    <md-dialog-actions>
-      <button md-button [md-dialog-close]="true">Close</button>
-    </md-dialog-actions>
-  </div>
+  <h1 md-dialog-title>Order Detail</h1>
+  <md-dialog-content *ngIf="data.action == 'detail'">
+
+    <ng-container *ngIf="data.orders as orders">
+
+      <h2>Product</h2>
+      <ngx-datatable #mydatatable class="material" [rows]="orders.items" [columnMode]="'force'" [headerHeight]="50"
+        [footerHeight]="50" [rowHeight]="auto">
+        <ngx-datatable-column name="Product">
+          <ng-template ngx-datatable-cell-template let-row="row">
+            {{row.product.title}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Quantity">
+          <ng-template ngx-datatable-cell-template let-row="row">
+            {{row.quantity}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Total Price">
+          <ng-template ngx-datatable-cell-template let-row="row">
+            {{row.totalPrice | currency: 'CAD':true}}
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+
+      <h2>Shipping</h2>
+      <md-list>
+        <md-list-item>
+          {{orders.shipping.name}}
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item>
+          {{orders.shipping.address1}} - {{orders.shipping.city}}
+        </md-list-item>
+        <md-divider></md-divider>
+        <md-list-item>
+          {{orders.shipping.address2}} - {{orders.shipping.city}}
+        </md-list-item>
+        <md-divider></md-divider>
+      </md-list>
+    </ng-container>
+
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-raised-button color="warn" [md-dialog-close]="true">Close</button>
+  </md-dialog-actions>
+</div>

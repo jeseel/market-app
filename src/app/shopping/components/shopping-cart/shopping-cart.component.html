@@ -26,11 +26,11 @@
 
                 <ngx-datatable-column name="Product">
                     <ng-template ngx-datatable-cell-template let-row="row">
-                        <a>{{row.title}}</a>
+                       <p>{{row.title}}</p> 
                     </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Quantity" minWidth="350">
+                <ngx-datatable-column name="Quantity" minWidth="243">
                         
                     <ng-template ngx-datatable-cell-template let-row="row">
                         <product-quantity [product]="row" [shopping-cart]="shoppingCart"></product-quantity>
